@@ -1,0 +1,22 @@
+services:
+    sonata.admin.category:
+        class: Zertz\SearchBundle\Admin\CategoryAdmin
+        arguments: [null, Zertz\SearchBundle\Entity\Category, 'SonataAdminBundle:CRUD']
+        calls:
+            - [setTranslationDomain, [Zertz\SearchBundle]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: GuideAchat, label: Categories }
+
+    sonata.admin.tag:
+        class: Zertz\SearchBundle\Admin\TagAdmin
+        arguments: [null, Zertz\SearchBundle\Entity\Tag, 'SonataAdminBundle:CRUD']
+        calls:
+            - [setTranslationDomain, [Zertz\SearchBundle]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Blog, label: Tags }
+
+    zertz.manager.category:
+        class: Zertz\SearchBundle\Entity\Manager\CategoryManager
+        arguments:
+            em: "@doctrine.orm.entity_manager"
+            class: Zertz\SearchBundle\Entity\Category

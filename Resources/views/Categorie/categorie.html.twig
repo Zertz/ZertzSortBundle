@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block contenu %}
+<p class="fil-ariane">
+    {% if categorie and parents %}
+        <a href="{{ path('categorie_liste') }}">Catégories</a>
+    {% else %}
+        Catégories
+    {% endif %}
+    {% for item in parents %}
+        {% if loop.last %}
+            > {{ item.nom }}
+        {% else %}
+            > <a href="{{ path('categorie', {'id': item.id, 'slug': item.slug}) }}">{{ item.nom }}</a>
+        {% endif %}
+    {% endfor %}
+</p>
+<ul>
+{% for item in entreprises %}
+    <li><a href="{{ path('entreprise', {'id': item.id, 'slug': item.slug}) }}">{{ item.nom }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
