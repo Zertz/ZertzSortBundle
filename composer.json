@@ -1,9 +1,9 @@
 {
     "name": "zertz/search-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony ZertzSearchBundle",
+    "description": "Symfony ZertzSortBundle",
     "keywords": ["search"],
-    "homepage": "http://github.com/Zertz/ZertzSearchBundle",
+    "homepage": "http://github.com/Zertz/ZertzSortBundle",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +17,7 @@
         "stof/doctrine-extensions-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": { "Zertz\\SearchBundle": "" }
+        "psr-0": { "Zertz\\SortBundle": "" }
     },
-    "target-dir": "Zertz/SearchBundle"
+    "target-dir": "Zertz/SortBundle"
 }

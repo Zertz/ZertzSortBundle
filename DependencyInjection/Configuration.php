@@ -1,6 +1,6 @@
 <?php
 
-namespace Zertz\SearchBundle\DependencyInjection;
+namespace Zertz\SortBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

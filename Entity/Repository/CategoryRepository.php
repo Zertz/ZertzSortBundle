@@ -1,5 +1,5 @@
 <?php
-namespace Zertz\SearchBundle\Entity\Repository;
+namespace Zertz\SortBundle\Entity\Repository;
 
 use Velo\FabricantBundle\Entity\Fabricant;
 
@@ -12,7 +12,7 @@ class CategoryRepository extends \Gedmo\Tree\Entity\Repository\NestedTreeReposit
     
     public function findByFabricant(Fabricant $fabricant)
     {
-        return $this->getEntityManager()->getRepository('ZertzSearchBundle:Category')->createQueryBuilder('c')
+        return $this->getEntityManager()->getRepository('ZertzSortBundle:Category')->createQueryBuilder('c')
             ->select('c')
             ->innerJoin('VeloFabricantBundle:FabricantsCategories', 'fc', 'WITH', 'c.id = fc.category')
             ->where('fc.fabricant = :fabricant')

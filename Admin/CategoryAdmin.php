@@ -1,5 +1,5 @@
 <?php
-namespace Zertz\SearchBundle\Admin;
+namespace Zertz\SortBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -14,7 +14,7 @@ class CategoryAdmin extends Admin
         $formMapper
             ->add('name')
             ->add('parent','entity', array(
-                'class' => 'Zertz\SearchBundle\Entity\Category',
+                'class' => 'Zertz\SortBundle\Entity\Category',
                 'property' => 'indentedName',
                 'required' => false,
             ))

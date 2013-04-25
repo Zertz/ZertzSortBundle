@@ -1,5 +1,5 @@
 <?php
-namespace Zertz\SearchBundle\Admin;
+namespace Zertz\SortBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;

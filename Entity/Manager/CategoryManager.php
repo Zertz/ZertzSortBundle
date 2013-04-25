@@ -1,5 +1,5 @@
 <?php
-namespace Zertz\SearchBundle\Entity\Manager;
+namespace Zertz\SortBundle\Entity\Manager;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;

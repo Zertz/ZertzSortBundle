@@ -1,6 +1,6 @@
 <?php
 
-namespace Zertz\SearchBundle\Entity;
+namespace Zertz\SortBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @Gedmo\Tree(type="nested")
  * @ORM\Table("Category")
- * @ORM\Entity(repositoryClass="Zertz\SearchBundle\Entity\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="Zertz\SortBundle\Entity\Repository\CategoryRepository")
  */
 class Category
 {
