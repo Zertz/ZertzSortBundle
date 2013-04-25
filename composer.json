@@ -1,8 +1,8 @@
 {
-    "name": "zertz/search-bundle",
+    "name": "zertz/sort-bundle",
     "type": "symfony-bundle",
     "description": "Symfony ZertzSortBundle",
-    "keywords": ["search"],
+    "keywords": ["sort"],
     "homepage": "http://github.com/Zertz/ZertzSortBundle",
     "license": "MIT",
     "authors": [
