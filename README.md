@@ -98,4 +98,16 @@ Finally, run the following command to update the database schema:
 4) Usage
 ----------------------------------
 
-...
+In an entity class:
+
+    class Photo
+    {
+        /**
+         * @ORM\ManyToMany(targetEntity="Acme\SortBundle\Entity\Tag")
+         * @ORM\JoinTable(name="zertz_blog__post_tags",
+         *      joinColumns={@ORM\JoinColumn(name="photo_id", referencedColumnName="id")},
+         *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
+         *      )
+         */
+        protected $tags;
+    }
