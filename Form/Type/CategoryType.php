@@ -1,5 +1,4 @@
 <?php
-// src/Zertz/SortBundle/Form/Type/CategoryType.php
 namespace Zertz\SortBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -11,18 +10,20 @@ class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('parent', 'entity', array(
-            'label' => 'Catégorie parent',
-            'class' => 'Zertz\SortBundle\Entity\Category',
-            'property' => 'indentedNom',
-            'required' => false,
-            'query_builder' => function(EntityRepository $repository) {
-                return $repository->createQueryBuilder('c')
-                    ->orderBy('c.root', 'asc')
-                    ->addOrderBy('c.lft', 'asc');
-            }
-        ));
-        $builder->add('nom');
+        $builder
+            ->add('parent', 'entity', array(
+                'label' => 'Catégorie parent',
+                'class' => 'Zertz\SortBundle\Entity\Category',
+                'property' => 'indentedNom',
+                'required' => false,
+                'query_builder' => function(EntityRepository $repository) {
+                    return $repository->createQueryBuilder('c')
+                        ->orderBy('c.root', 'asc')
+                        ->addOrderBy('c.lft', 'asc');
+                }
+            ))
+            ->add('name')
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -34,7 +35,6 @@ class CategoryType extends AbstractType
 
     public function getName()
     {
-        return 'categorie';
+        return 'category';
     }
 }
-?>

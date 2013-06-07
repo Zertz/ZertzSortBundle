@@ -1,8 +1,0 @@
-# Catégories
-categorie:
-    resource: "@ZertzSortBundle/Controller/CategoryController.php"
-    prefix: /{_locale}/trouver
-    defaults: { _locale: fr }
-    type: annotation
-    requirements:
-        _locale: fr|en

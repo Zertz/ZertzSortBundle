@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @Gedmo\Tree(type="nested")
- * @ORM\Table("Category")
+ * @ORM\Table("zertz_sort__category")
  * @ORM\Entity(repositoryClass="Zertz\SortBundle\Entity\Repository\CategoryRepository")
  */
 class Category
 {
     /**
-     * @ORM\Column(name="ID", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue()
      */
@@ -22,7 +22,7 @@ class Category
 
     /**
      * @Assert\NotBlank()
-     * @ORM\Column(name="Name", type="string", length=45)
+     * @ORM\Column(name="name", type="string", length=45)
      */
     private $name;
 

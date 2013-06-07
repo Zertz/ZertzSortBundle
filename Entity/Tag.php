@@ -1,50 +1,34 @@
 <?php
-
 namespace Zertz\SortBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table()
- */
-class Tag
+use Zertz\SortBundle\Model\TagInterface;
+
+class Tag implements TagInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(name="ID", type="integer")
-     * @ORM\GeneratedValue()
-     */
-    private $id;
-
-    /**
-     * @Assert\NotBlank()
-     * @ORM\Column(name="Name", type="string", length=45)
-     */
     private $name;
-
-    /**
-     * @Gedmo\Slug(fields={"name"}, updatable=true, unique=false, separator="-", style="default")
-     * @ORM\Column(name="Slug", type="string", length=45)
-     */
+    
     private $slug;
+    
+    protected $createdAt;
+    
+    protected $updatedAt;
     
     public function __toString() {
         return $this->name ?: '';
     }
-
+    
     public function getId()
     {
         return $this->id;
     }
-
+    
     public function setName($name)
     {
         $this->name = $name;
     }
-
+    
     public function getName()
     {
         return $this->name;
@@ -60,5 +44,29 @@ class Tag
     public function getSlug()
     {
         return $this->slug;
+    }
+    
+    public function setCreatedAt()
+    {
+        $this->createdAt = new \DateTime('now');
+        
+        return $this;
+    }
+    
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+    
+    public function setUpdatedAt()
+    {
+        $this->updatedAt = new \DateTime('now');
+        
+        return $this;
+    }
+    
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

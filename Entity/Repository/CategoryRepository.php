@@ -1,26 +1,11 @@
 <?php
 namespace Zertz\SortBundle\Entity\Repository;
 
-use Velo\FabricantBundle\Entity\Fabricant;
-
 class CategoryRepository extends \Gedmo\Tree\Entity\Repository\NestedTreeRepository
 {
     public function findAll()
     {
         return $this->findBy(array(), array('root' => 'ASC', 'lft' => 'ASC'));
-    }
-    
-    public function findByFabricant(Fabricant $fabricant)
-    {
-        return $this->getEntityManager()->getRepository('ZertzSortBundle:Category')->createQueryBuilder('c')
-            ->select('c')
-            ->innerJoin('VeloFabricantBundle:FabricantsCategories', 'fc', 'WITH', 'c.id = fc.category')
-            ->where('fc.fabricant = :fabricant')
-            ->orderBy('c.name', 'ASC')
-            ->setParameter('fabricant', $fabricant->getId())
-            ->getQuery()
-            ->getResult()
-        ;
     }
     
     public function getFlatNodes($startNode = null, $options = null) {

@@ -16,82 +16,86 @@ This bundle provides category and tag support built on top of Symfony2.
 1) Requirements
 ----------------------------------
 
-There are very few requirements to get the bundle up and running, the most
-important being a working installation of Symfony 2.
+1. Symfony 2.2 Although it wasn't tested, it should also work with 2.1
+2. Doctrine 2
 
 2) Installation
 ----------------------------------
 
 ### Using Composer
 
-In your composer.json, add the following line:
+In composer.json, add:
 
     "require": {
-        ...,
-
-        "stof/doctrine-extensions-bundle": "dev-master",
-
         "zertz/sort-bundle": "dev-master"
     }
 
-You will then need to run an update:
+Run an update to download the bundle:
 
-    php composer.phar update
+    php composer.phar update zertz/sort-bundle
 
 3) Configuration
 ----------------------------------
 
 ### AppKernel.php
 
-In your AppKernel, you need to include these dependencies:
+Enable the bundle:
 
     public function registerBundles()
     {
         $bundles = array(
-            ...,
-
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-
-            new Zertz\SortBundle\ZertzSortBundle()
+            new Zertz\SortBundle\ZertzSortBundle(),
         );
-        ...
     }
 
-4) Database
-----------------------------------
+### Extend the Tag class
 
-To update your schema, run the following command:
+This bundle provides the basics for persisting a tag object to the database. It
+is your role however to extend the Tag class and add any fields you deem useful.
+
+To get started, your entity class should look like this:
+
+    <?php
+    // src/Acme/SortBundle/Entity/Tag.php
+    
+    namespace Acme\SortBundle\Entity;
+    
+    use Doctrine\ORM\Mapping as ORM;
+    use Zertz\SortBundle\Entity\Tag as BaseTag;
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="zertz_sort__tag")
+     */
+    class Tag extends BaseTag
+    {
+        /**
+         * @ORM\Column(name="id", type="integer", nullable=false)
+         * @ORM\Id
+         * @ORM\GeneratedValue(strategy="IDENTITY")
+         */
+        private $id;
+
+        public function __construct() {
+            parent::__construct();
+        }
+
+        /**
+         * Get id
+         *
+         * @return integer 
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+    }
+
+Finally, run the following command to update the database schema:
 
     php app/console doctrine:schema:update --force
 
-5) Usage
+4) Usage
 ----------------------------------
-
-The bundle provides services through which data can be fetched as well as
-helpers for common needs.
-
-In your controller, you can add a function to get the service:
-
-    protected function getSortManager()
-    {
-        return $this->container->get('zertz.manager.sort');
-    }
-
-* Add an example for showing a category tree
-
-It is up to you to implement the fetching of objects using categories and tags.
-Here is a simple example of a repository function:
-
-    public function findByTag(\Zertz\SortBundle\Entity\Tag $tag)
-    {
-        return $this->getEntityManager()->getRepository('ZertzBlogBundle:Post')->createQueryBuilder('p')
-            ->select('p')
-            ->where('p.published = TRUE AND p.slug = :slug')
-            ->innerJoin('ZertzBlogBundle:PostTag', 'pt', 'WITH', 'p.id = pt.post')
-            ->innerJoin('ZertzSortBundle:Tag', 't', 'WITH', 't.id = :tag')
-            ->setParameter('tag', $tag)
-            ->getQuery()
-            ->getResult();
-    }
 
 ...
