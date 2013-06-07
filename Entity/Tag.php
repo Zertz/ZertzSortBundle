@@ -15,6 +15,10 @@ class Tag implements TagInterface
     
     protected $updatedAt;
     
+    public function __construct() {
+        
+    }
+    
     public function __toString() {
         return $this->name ?: '';
     }
