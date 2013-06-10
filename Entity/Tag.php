@@ -7,9 +7,9 @@ use Zertz\SortBundle\Model\TagInterface;
 
 class Tag implements TagInterface
 {
-    private $name;
+    protected $name;
     
-    private $slug;
+    protected $slug;
     
     protected $createdAt;
     
