@@ -1,5 +1,5 @@
 <?php
-namespace Zertz\PhotoBundle\EventListener;
+namespace Zertz\SortBundle\EventListener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
