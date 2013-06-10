@@ -2,6 +2,7 @@
 namespace Zertz\SortBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Zertz\SortBundle\Model\TagInterface;
 
