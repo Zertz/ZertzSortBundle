@@ -9,10 +9,19 @@ class Tag implements TagInterface
 {
     protected $name;
     
+    /**
+     * @Gedmo\Slug(fields={"name"}, updatable=true, unique=true, separator="-", style="default")
+     */
     protected $slug;
     
+    /**
+     * @Gedmo\Timestampable(on="create")
+     */
     protected $createdAt;
     
+    /**
+     * @Gedmo\Timestampable(on="update")
+     */
     protected $updatedAt;
     
     public function __construct() {
